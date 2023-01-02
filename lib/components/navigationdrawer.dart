@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/components/menudrawer.dart';
 import 'package:my_app/constant/navigation.dart';
 import 'package:my_app/screens/login.dart';
 
@@ -17,6 +18,7 @@ class _MyNavigationState extends State<MyNavigation> {
       appBar: AppBar(
         title: Text("app bar"),
       ),
+      drawer: MyMenuDrawer(),
       body: SafeArea(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
