@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/constant/navigation.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const String id = loginScreen;
   const LoginScreen({super.key});
 
   @override
@@ -132,7 +134,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.orangeAccent.shade700,
                 ),
               ),
-              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -140,11 +141,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     "Dont't have any account yet? ",
                     style: TextStyle(color: Colors.black45),
                   ),
-                  Text(
-                    "Sign up",
-                    style: TextStyle(
-                        color: Colors.orangeAccent.shade700,
-                        fontWeight: FontWeight.bold),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Sign up",
+                      style: TextStyle(
+                          color: Colors.orangeAccent.shade700,
+                          fontWeight: FontWeight.bold),
+                    ),
                   )
                 ],
               )

@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/components/navigationdrawer.dart';
+import 'package:my_app/screens/login.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    initialRoute: MyNavigation.id,
+    routes: {
+      MyNavigation.id: (context) => MyNavigation(),
+      LoginScreen.id: (context) => LoginScreen()
+    },
+    // home: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {

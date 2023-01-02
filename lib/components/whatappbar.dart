@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatefulWidget {
-  const MyAppBar({super.key});
+class WhatAppScreen extends StatefulWidget {
+  const WhatAppScreen({super.key});
 
   @override
-  State<MyAppBar> createState() => _MyAppBarState();
+  State<WhatAppScreen> createState() => _WhatAppScreenState();
 }
 
-class _MyAppBarState extends State<MyAppBar> {
+class _WhatAppScreenState extends State<WhatAppScreen> {
   @override
   Widget build(BuildContext context) {
     return Container();
