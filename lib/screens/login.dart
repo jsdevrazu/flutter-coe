@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:my_app/components/menudrawer.dart';
 import 'package:my_app/constant/navigation.dart';
+import 'package:my_app/utils/apiEndPoints.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = loginScreen;
@@ -11,6 +15,20 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  void login(String email, String password) async {
+    try {
+      final res = await http.post(Uri.parse(signup),
+          body: {'email': email, 'password': password});
+      var data = jsonDecode(res.body.toString());
+      print(data);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -74,6 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: emailController,
                       decoration: InputDecoration(
                           hintText: "Email",
                           fillColor: Colors.grey.shade300,
@@ -93,6 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 15),
                     TextFormField(
+                      controller: passwordController,
                       decoration: InputDecoration(
                           hintText: "Password",
                           fillColor: Colors.grey.shade300,
@@ -118,21 +138,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 100),
-              Container(
-                // ignore: sort_child_properties_last
-                child: const Center(
-                    child: Text(
-                  "Login Now",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400),
-                )),
-                width: 300,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.orangeAccent.shade700,
+              InkWell(
+                onTap: (() {
+                  login(emailController.toString(),
+                      passwordController.toString());
+                }),
+                child: Container(
+                  // ignore: sort_child_properties_last
+                  child: const Center(
+                      child: Text(
+                    "Login Now",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400),
+                  )),
+                  width: 300,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.orangeAccent.shade700,
+                  ),
                 ),
               ),
               Row(
