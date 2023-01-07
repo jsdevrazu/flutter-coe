@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/covid_tracker/covid_tracker_screen.dart';
+import 'package:my_app/screens/pet_app/pet_app_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +15,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return CovidAppScreen();
+    return const PetAppScreen();
   }
 }
